@@ -29,8 +29,15 @@ public class MyLinkedList<E> {
      * @return
      */
 	public E get(int index) {
-		return null;
+        MyLinkedNode<E> currentNode = head.getNext();
+        for(int i = 0; i < index; i++)
+        {
+            currentNode = currentNode.getNext();
+        }
+        return(currentNode.getValue());
 	}
+
+
 
     /**
      * Adds a new element to the end of the list:
@@ -38,6 +45,19 @@ public class MyLinkedList<E> {
      * @param elem
      */
 	public void add(E elem) {
+        MyLinkedNode<E> newNode = new MyLinkedNode<>(elem);
+        MyLinkedNode<E> oldNode = tail.getPrev();
+        if(size() == 0)
+        {
+            head.setNext(newNode);
+            tail.setPrev(newNode);
+        }
+        else
+        {
+            oldNode.setNext(newNode);
+            tail.setPrev(newNode);
+        }
+        numElements++;
 	}
 
     /**
@@ -46,6 +66,17 @@ public class MyLinkedList<E> {
      * @param elem
      */
 	public void add(int i, E elem) {
+        MyLinkedNode<E> newNode = new MyLinkedNode<>(elem);
+        MyLinkedNode<E> current = head.getNext();
+        for (int j = 0; j < i-1; j++)
+        {
+            current = current.getNext();
+        }
+        newNode.setPrev(current);
+        newNode.setNext(current.getNext());
+        current.getNext().setPrev(newNode);
+        current.setNext(newNode);
+        numElements++;
 	}
 
     /**

@@ -1,9 +1,9 @@
 package org.macalester.edu.comp124.lists;
 
 public class MyLinkedNode<E> {
-	private MyLinkedNode<E> next;
-	private MyLinkedNode<E> prev;
-	private E value;
+	public MyLinkedNode<E> next;
+	public MyLinkedNode<E> prev;
+	public E value;
 	
 	public MyLinkedNode(E data) {
 		this.value = data;
