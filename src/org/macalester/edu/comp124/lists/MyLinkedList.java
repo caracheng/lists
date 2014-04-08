@@ -47,16 +47,8 @@ public class MyLinkedList<E> {
 	public void add(E elem) {
         MyLinkedNode<E> newNode = new MyLinkedNode<>(elem);
         MyLinkedNode<E> oldNode = tail.getPrev();
-        if(size() == 0)
-        {
-            head.setNext(newNode);
-            tail.setPrev(newNode);
-        }
-        else
-        {
-            oldNode.setNext(newNode);
-            tail.setPrev(newNode);
-        }
+        oldNode.setNext(newNode);
+        tail.setPrev(newNode);
         numElements++;
 	}
 
