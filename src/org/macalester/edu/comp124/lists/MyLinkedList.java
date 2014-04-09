@@ -44,13 +44,15 @@ public class MyLinkedList<E> {
      *
      * @param elem
      */
-	public void add(E elem) {
+    public void add(E elem) {
         MyLinkedNode<E> newNode = new MyLinkedNode<>(elem);
         MyLinkedNode<E> oldNode = tail.getPrev();
         oldNode.setNext(newNode);
         tail.setPrev(newNode);
+        newNode.setPrev(oldNode);
+        newNode.setNext(tail);
         numElements++;
-	}
+    }
 
     /**
      * Inserts a new element at the specified index.
